@@ -1,7 +1,59 @@
-import React from 'react'
+import React, { useState } from 'react';
 
 export default function EmployeeComponent() {
+  const [firstname, setFirstname] = useState('')
+  const [lastname, setLastname] = useState('')
+  const [email, setEmail] = useState('')
+  const handleFirstname = (e) => { setFirstname(e.target.value); };
+  const handleLastname = (e) => { setLastname(e.target.value); };
+  const handleEmail = (e) => { setEmail(e.target.value); };
+  const saveEmployee = (e) => {
+  e.preventDefault(); 
+  const employee = { firstname, lastname, email };
+  console.log(employee); 
+};
+  // html code 
   return (
-    <div>EmployeeComponent</div>
+    <div className='container'>
+      <div className="row">
+        <div className="card">
+          <h2 className="text-center">Add Employee</h2>
+          <div className="card-body">
+            <form action="">
+
+              <div className="form-group mb-2">
+                <label  className="form-label">FirstName</label>
+                <input type="text" 
+                placeholder='Enter Employee Firstname' 
+                name='firstname' 
+                value={firstname}
+                onChange={handleFirstname}
+                />
+              </div>
+              <div className="form-group mb-2">
+                <label  className="form-label">LastName</label>
+                <input type="text" 
+                placeholder='Enter Employee Lastname' 
+                name='firstname' 
+                value={lastname}
+                onChange={handleLastname}
+                />
+              </div>
+              <div className="form-group mb-2">
+                <label  className="form-label">Email</label>
+                <input type="password" 
+                placeholder='Enter Employee Email' 
+                name='email' 
+                value={email}
+                onChange={handleEmail}
+                />
+              </div>
+              <button className="btn btn-success" onClick={saveEmployee}>Submit</button>
+              
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
   )
 }
