@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { createEmployee } from '../services/EmployeeService';
 
 export default function EmployeeComponent() {
   const [firstname, setFirstname] = useState('')
@@ -10,7 +11,7 @@ export default function EmployeeComponent() {
   const saveEmployee = (e) => {
   e.preventDefault(); 
   const employee = { firstname, lastname, email };
-  console.log(employee); 
+  createEmployee(employee)
 };
   // html code 
   return (
@@ -20,15 +21,20 @@ export default function EmployeeComponent() {
           <h2 className="text-center">Add Employee</h2>
           <div className="card-body">
             <form action="">
-
               <div className="form-group mb-2">
+                {/* label */}
+                <div className="col">
                 <label  className="form-label">FirstName</label>
-                <input type="text" 
+                </div>
+                <div className="col">
+                <input  type="text" 
                 placeholder='Enter Employee Firstname' 
                 name='firstname' 
                 value={firstname}
                 onChange={handleFirstname}
+                className='inp'
                 />
+                </div>
               </div>
               <div className="form-group mb-2">
                 <label  className="form-label">LastName</label>
